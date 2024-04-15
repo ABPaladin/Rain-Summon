@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://d1l6wlgnosqkk"]
+
+[ext_resource type="Texture2D" uid="uid://cmqq2if1cjhau" path="res://assets/enemys/traps/spike/Blink (54x52).png" id="1_jevvc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sl8c1"]
+atlas = ExtResource("1_jevvc")
+region = Rect2(0, 0, 54, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6n3q"]
+atlas = ExtResource("1_jevvc")
+region = Rect2(54, 0, 54, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kfyf"]
+atlas = ExtResource("1_jevvc")
+region = Rect2(108, 0, 54, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uygsh"]
+atlas = ExtResource("1_jevvc")
+region = Rect2(162, 0, 54, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g6bvu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sl8c1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6n3q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kfyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uygsh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6hos"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8px2"]
+size = Vector2(48, 48)
+
+[node name="spike" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g6bvu")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_v6hos")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_y8px2")
+debug_color = Color(1, 0.0117647, 0.0235294, 0.419608)

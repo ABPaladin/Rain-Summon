@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://c1ijb83id6bmn"]
+
+[ext_resource type="Texture2D" uid="uid://b12y1v0fuyrks" path="res://assets/enemys/enemy/Crab Enemy Camacebra Games/Idle/Crab1.png" id="1_oxpa3"]
+[ext_resource type="Texture2D" uid="uid://vgvlceo65h2v" path="res://assets/enemys/enemy/Crab Enemy Camacebra Games/Idle/Crab2.png" id="2_0fgdr"]
+[ext_resource type="Texture2D" uid="uid://dr1n5vodv6hm2" path="res://assets/enemys/enemy/Crab Enemy Camacebra Games/Idle/Crab3.png" id="3_l84rx"]
+[ext_resource type="Texture2D" uid="uid://dqvsaqnlf6djt" path="res://assets/enemys/enemy/Crab Enemy Camacebra Games/Idle/Crab4.png" id="4_6p7b8"]
+[ext_resource type="Texture2D" uid="uid://d4lfaluct086c" path="res://assets/enemys/enemy/Crab Enemy Camacebra Games/Idle/Crab5.png" id="5_nlp4g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ldj44"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_oxpa3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0fgdr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_l84rx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6p7b8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nlp4g")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4a4fk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bb5aa"]
+size = Vector2(26, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bgkq"]
+size = Vector2(26, 17)
+
+[node name="Crab" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8.9407e-07, 8.9407e-07)
+scale = Vector2(1.11111, 1.11111)
+sprite_frames = SubResource("SpriteFrames_ldj44")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.923383
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_4a4fk")
+
+[node name="hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_bb5aa")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_6bgkq")
+debug_color = Color(1, 0.0117647, 0.0235294, 0.419608)

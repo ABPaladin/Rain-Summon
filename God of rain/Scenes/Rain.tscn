@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0nbrurrf2c7m"]
+
+[ext_resource type="Texture2D" uid="uid://dgvngkeripj2b" path="res://assets/items/rain.png" id="1_fg4ca"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xunqo"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(200, 1, 1)
+gravity = Vector3(0, 98, 0)
+
+[node name="Rain" type="Node"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="StaticBody2D"]
+
+[node name="rain" type="GPUParticles2D" parent="StaticBody2D"]
+texture_filter = 1
+position = Vector2(188, 1)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_xunqo")
+texture = ExtResource("1_fg4ca")
+lifetime = 2.5
+speed_scale = 3.0

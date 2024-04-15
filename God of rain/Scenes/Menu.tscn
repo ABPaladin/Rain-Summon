@@ -1,0 +1,51 @@
+[gd_scene load_steps=11 format=3 uid="uid://bsu4i8gx600gb"]
+
+[ext_resource type="PackedScene" uid="uid://ely6j3b6cv3l" path="res://Scenes/sound_fx.tscn" id="1_8v1eb"]
+[ext_resource type="Script" path="res://Code/StartButton.gd" id="1_q1nff"]
+[ext_resource type="Texture2D" uid="uid://dr7pw53gjusdg" path="res://assets/UI/poster.png" id="2_bu84c"]
+[ext_resource type="FontFile" uid="uid://c8xdmps0y6kc5" path="res://assets/UI/m3x6.ttf" id="3_kvdg5"]
+[ext_resource type="AudioStream" uid="uid://diqytw6m7tnqq" path="res://assets/music/ethnic ambient I.mp3" id="5_rm64h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4wm0n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dbtd7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nul02"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_38yr0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1u4xl"]
+
+[node name="Menu" type="Node"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_q1nff")
+
+[node name="Poster" type="Sprite2D" parent="Control"]
+position = Vector2(173, 123)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_bu84c")
+
+[node name="Play" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 133.0
+offset_right = 97.0
+offset_bottom = 187.0
+theme_override_fonts/font = ExtResource("3_kvdg5")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4wm0n")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dbtd7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_nul02")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_38yr0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1u4xl")
+text = "Play"
+
+[node name="Sound_fx" parent="." instance=ExtResource("1_8v1eb")]
+stream = ExtResource("5_rm64h")
+
+[connection signal="pressed" from="Control/Play" to="Control" method="_on_play_pressed"]

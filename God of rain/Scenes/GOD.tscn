@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2ytlnujio4ir"]
+
+[ext_resource type="Texture2D" uid="uid://bn0uwrd8lgywp" path="res://assets/UI/Cloud Tileset.png" id="1_5yoei"]
+[ext_resource type="Script" path="res://Code/GOD.gd" id="1_c5pok"]
+[ext_resource type="FontFile" uid="uid://c8xdmps0y6kc5" path="res://assets/UI/m3x6.ttf" id="2_ewmum"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bybsi"]
+texture = ExtResource("1_5yoei")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kun2k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_odqqd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8pr4m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ub7p"]
+
+[node name="God" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c5pok")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_bybsi")
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ewmum")
+text = "    You are the chosen shaman of  Indians Inca tribe .
+    Your people have long suffered from the drought.  
+    The gods are displeased! 
+    They do not want to send rain to your land.
+    Use the Book of Wisdom to understand what sacrifice can appease the gods.
+    1.Find the \"bone of ancestors.\" It may be in a dark cave.
+    2.Retrieve from the wild jungles the Pineapple, an ancient honorary fruit.
+    3.Go to the great ocean. There you will find the Seashell - a gift from 
+    the sea god. 
+    Congratulations! The gods are pleased with your sacrifice.
+    They want to reward your people with heavy rain!"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+offset_left = 248.0
+offset_top = 157.0
+offset_right = 304.0
+offset_bottom = 203.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ewmum")
+theme_override_font_sizes/font_size = 47
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kun2k")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_odqqd")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_8pr4m")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7ub7p")
+text = "Next
+"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

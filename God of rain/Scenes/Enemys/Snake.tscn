@@ -1,0 +1,104 @@
+[gd_scene load_steps=14 format=3 uid="uid://c1jjdgaebbbh4"]
+
+[ext_resource type="Texture2D" uid="uid://b82vdq80twvxp" path="res://assets/enemys/enemy/snake/snake.png" id="1_uvxdr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqmwf"]
+atlas = ExtResource("1_uvxdr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xx7t"]
+atlas = ExtResource("1_uvxdr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7h1wr"]
+atlas = ExtResource("1_uvxdr")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8k8mn"]
+atlas = ExtResource("1_uvxdr")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc4p8"]
+atlas = ExtResource("1_uvxdr")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a46kh"]
+atlas = ExtResource("1_uvxdr")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo3bh"]
+atlas = ExtResource("1_uvxdr")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6uj3"]
+atlas = ExtResource("1_uvxdr")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iue8v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqmwf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xx7t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7h1wr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8k8mn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc4p8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a46kh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wo3bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6uj3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1tqpd"]
+size = Vector2(17, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mpnxp"]
+size = Vector2(20, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hk4t"]
+size = Vector2(20, 15)
+
+[node name="CharacterBody2D" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_iue8v")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.446497
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_1tqpd")
+
+[node name="hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_mpnxp")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_3hk4t")
+debug_color = Color(1, 0.0117647, 0.0235294, 0.419608)
